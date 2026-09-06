@@ -211,10 +211,13 @@ function QuickAction({
   return (
     <Link
       to={to}
-      className="tap soft-card flex items-center gap-3 p-4 text-sm font-medium active:scale-[0.98] transition-transform"
+      className="tap soft-card flex items-center gap-3 p-4 text-sm font-medium transition-all active:scale-[0.98] hover:border-[rgba(94,234,212,0.3)] hover:shadow-[0_4px_20px_rgba(94,234,212,0.1)]"
     >
-      <span className="calm-gradient flex size-9 items-center justify-center rounded-2xl">
-        <Icon className="size-5 text-primary-foreground" />
+      <span
+        className="flex size-9 items-center justify-center rounded-2xl"
+        style={{ background: "linear-gradient(135deg,#4C3FD9,#6C4FE0)", boxShadow: "0 0 12px rgba(94,234,212,0.2)" }}
+      >
+        <Icon className="size-5 text-white" />
       </span>
       {label}
     </Link>

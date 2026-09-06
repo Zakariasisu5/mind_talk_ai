@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Brain, Calculator, Grid3x3 } from "lucide-react";
-import { PageHeader } from "@/components/AppShell";
+import { PageHeader, Disclaimer } from "@/components/AppShell";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -85,6 +85,8 @@ function BrainPage() {
             <PatternGame onScore={(v) => record("pattern", v)} />
           </TabsContent>
         </Tabs>
+
+        <Disclaimer className="pb-4" />
       </div>
     </div>
   );

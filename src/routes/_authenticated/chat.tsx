@@ -124,11 +124,11 @@ function ChatPage() {
         {(messages.data ?? []).map((m) => (
           <div
             key={m.id}
-            className={`flex max-w-[92%] items-start gap-1 ${m.role === "user" ? "ml-auto" : "mr-auto"}`}
+            className={`flex max-w-[92%] items-end gap-1 ${m.role === "user" ? "ml-auto flex-row-reverse" : "mr-auto"}`}
           >
             <div
-              className={`whitespace-pre-wrap rounded-3xl px-4 py-3 text-sm ${
-                m.role === "user" ? "bg-primary text-primary-foreground" : "soft-card"
+              className={`whitespace-pre-wrap text-sm ${
+                m.role === "user" ? "chat-bubble-user" : "chat-bubble-ai"
               }`}
             >
               {m.content}
@@ -138,7 +138,7 @@ function ChatPage() {
         ))}
 
         {send.isPending ? (
-          <div className="soft-card mr-auto flex max-w-[85%] items-center gap-2 px-4 py-3 text-sm text-muted-foreground">
+          <div className="chat-bubble-ai mr-auto flex max-w-[85%] items-center gap-2 text-sm text-white/60">
             <Loader2 className="size-4 animate-spin" /> Thinking…
           </div>
         ) : null}
@@ -168,7 +168,8 @@ function ChatPage() {
             type="submit"
             aria-label="Send message"
             disabled={send.isPending}
-            className="calm-gradient tap flex size-12 items-center justify-center rounded-2xl text-primary-foreground disabled:opacity-60"
+            className="tap flex size-12 items-center justify-center rounded-2xl font-bold transition-all hover:brightness-110 disabled:opacity-60"
+            style={{ background: "#5EEAD4", color: "#1E1B4B", boxShadow: "0 0 16px rgba(94,234,212,0.4)" }}
           >
             <Send className="size-5" />
           </button>

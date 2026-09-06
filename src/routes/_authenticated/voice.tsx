@@ -177,9 +177,12 @@ function VoicePage() {
           onClick={recording ? stop : start}
           disabled={process.isPending}
           aria-label={recording ? "Stop recording" : "Start recording"}
-          className={`pointer-events-auto tap mb-3 flex h-16 min-w-16 items-center gap-2 rounded-full px-6 text-base font-semibold text-primary-foreground shadow-lg transition-transform active:scale-95 ${
-            recording ? "bg-destructive" : "calm-gradient"
-          } disabled:opacity-60`}
+          className={`pointer-events-auto tap mb-3 flex h-16 min-w-16 items-center gap-2 rounded-full px-6 text-base font-semibold text-white shadow-xl transition-transform active:scale-95 disabled:opacity-60`}
+          style={
+            recording
+              ? { background: "#ef4444" }
+              : { background: "linear-gradient(135deg,#4C3FD9,#6C4FE0)", boxShadow: "0 0 24px rgba(94,234,212,0.35)" }
+          }
         >
           {recording ? <Square className="size-6" /> : <Mic className="size-6" />}
           {recording ? `Stop · ${seconds}s` : "Record"}
