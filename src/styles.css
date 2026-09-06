@@ -1,0 +1,221 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --font-mono:
+    "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root {
+  --radius: 1.15rem;
+
+  --background: oklch(0.985 0.012 190);
+  --foreground: oklch(0.27 0.035 205);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.27 0.035 205);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.27 0.035 205);
+
+  --primary: oklch(0.63 0.107 187);
+  --primary-foreground: oklch(0.99 0.005 190);
+  --secondary: oklch(0.945 0.03 190);
+  --secondary-foreground: oklch(0.35 0.05 200);
+  --muted: oklch(0.955 0.018 195);
+  --muted-foreground: oklch(0.52 0.03 205);
+  --accent: oklch(0.9 0.06 175);
+  --accent-foreground: oklch(0.3 0.05 200);
+  --destructive: oklch(0.6 0.2 22);
+  --destructive-foreground: oklch(0.99 0.005 190);
+  --success: oklch(0.68 0.13 155);
+  --success-foreground: oklch(0.2 0.03 160);
+  --warning: oklch(0.79 0.14 75);
+  --warning-foreground: oklch(0.27 0.04 75);
+
+  --border: oklch(0.9 0.02 195);
+  --input: oklch(0.9 0.02 195);
+  --ring: oklch(0.63 0.107 187);
+
+  --chart-1: oklch(0.63 0.107 187);
+  --chart-2: oklch(0.68 0.13 155);
+  --chart-3: oklch(0.72 0.11 240);
+  --chart-4: oklch(0.79 0.14 75);
+  --chart-5: oklch(0.66 0.14 330);
+
+  --sidebar: oklch(0.99 0.008 190);
+  --sidebar-foreground: oklch(0.27 0.035 205);
+  --sidebar-primary: oklch(0.63 0.107 187);
+  --sidebar-primary-foreground: oklch(0.99 0.005 190);
+  --sidebar-accent: oklch(0.945 0.03 190);
+  --sidebar-accent-foreground: oklch(0.3 0.05 200);
+  --sidebar-border: oklch(0.9 0.02 195);
+  --sidebar-ring: oklch(0.63 0.107 187);
+}
+
+.dark {
+  --background: oklch(0.19 0.025 215);
+  --foreground: oklch(0.95 0.012 190);
+  --card: oklch(0.235 0.028 213);
+  --card-foreground: oklch(0.95 0.012 190);
+  --popover: oklch(0.235 0.028 213);
+  --popover-foreground: oklch(0.95 0.012 190);
+
+  --primary: oklch(0.72 0.11 185);
+  --primary-foreground: oklch(0.18 0.03 210);
+  --secondary: oklch(0.29 0.03 210);
+  --secondary-foreground: oklch(0.93 0.015 190);
+  --muted: oklch(0.28 0.028 210);
+  --muted-foreground: oklch(0.71 0.025 195);
+  --accent: oklch(0.33 0.05 190);
+  --accent-foreground: oklch(0.95 0.012 190);
+  --destructive: oklch(0.65 0.19 22);
+  --destructive-foreground: oklch(0.98 0.005 190);
+  --success: oklch(0.72 0.13 155);
+  --success-foreground: oklch(0.17 0.03 160);
+  --warning: oklch(0.8 0.14 75);
+  --warning-foreground: oklch(0.2 0.03 75);
+
+  --border: oklch(1 0 0 / 12%);
+  --input: oklch(1 0 0 / 16%);
+  --ring: oklch(0.72 0.11 185);
+
+  --sidebar: oklch(0.21 0.026 214);
+  --sidebar-foreground: oklch(0.95 0.012 190);
+  --sidebar-primary: oklch(0.72 0.11 185);
+  --sidebar-primary-foreground: oklch(0.18 0.03 210);
+  --sidebar-accent: oklch(0.29 0.03 210);
+  --sidebar-accent-foreground: oklch(0.95 0.012 190);
+  --sidebar-border: oklch(1 0 0 / 12%);
+  --sidebar-ring: oklch(0.72 0.11 185);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    background-color: #0d1f1c; /* landing ink — avoids overscroll flash */
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    overflow-x: hidden;
+    font-family:
+      ui-rounded,
+      "SF Pro Rounded",
+      "Nunito",
+      system-ui,
+      -apple-system,
+      "Segoe UI",
+      sans-serif;
+  }
+
+  button,
+  a,
+  [role="button"] {
+    touch-action: manipulation;
+  }
+}
+
+/* Safe-area helpers for notch / home indicator */
+@utility pt-safe {
+  padding-top: max(env(safe-area-inset-top), 0px);
+}
+
+@utility pb-safe {
+  padding-bottom: max(env(safe-area-inset-bottom), 0px);
+}
+
+@utility px-safe {
+  padding-left: max(env(safe-area-inset-left), 0px);
+  padding-right: max(env(safe-area-inset-right), 0px);
+}
+
+/* Minimum comfortable touch target */
+@utility tap {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+@utility soft-card {
+  background-color: var(--color-card);
+  color: var(--color-card-foreground);
+  border-radius: var(--radius-2xl);
+  border: 1px solid var(--color-border);
+  box-shadow: 0 1px 2px oklch(0.4 0.05 200 / 0.04), 0 8px 24px oklch(0.4 0.05 200 / 0.06);
+}
+
+@utility calm-gradient {
+  background-image: linear-gradient(
+    140deg,
+    color-mix(in oklab, var(--color-primary) 88%, white),
+    color-mix(in oklab, var(--color-chart-2) 70%, var(--color-primary))
+  );
+}
+
+/* Landing: travelling pulse along an ECG path (pathLength="1") */
+@keyframes ecg-scan {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: -1;
+  }
+}
+
+@utility ecg-pulse {
+  stroke-dasharray: 0.22 0.78;
+  animation: ecg-scan 3.2s linear infinite;
+}
