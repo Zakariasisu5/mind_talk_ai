@@ -37,11 +37,17 @@ const theme = {
     textDim: "rgba(255, 255, 255, 0.7)",
     textMuted: "rgba(255, 255, 255, 0.5)",
     border: "rgba(255, 255, 255, 0.1)",
+    borderBright: "rgba(255, 255, 255, 0.15)",
     glass: "rgba(255, 255, 255, 0.05)",
   },
   gradient: {
     primary: "linear-gradient(135deg, #00FFD1 0%, #A855F7 100%)",
     bg: "linear-gradient(180deg, #0A0118 0%, #13082A 50%, #1D0F40 100%)",
+  },
+  shadow: {
+    card: "0 4px 24px rgba(0, 0, 0, 0.2)",
+    glow: "0 0 40px rgba(0, 255, 209, 0.3)",
+    glowLarge: "0 0 60px rgba(0, 255, 209, 0.4)",
   },
 };
 
