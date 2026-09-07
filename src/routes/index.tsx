@@ -157,198 +157,292 @@ const PLAN_FEATURES = [
 
 function Landing() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  // Handle scroll effect
+  useState(() => {
+    if (typeof window === "undefined") return;
+    
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  });
 
   return (
     <div style={{ background: theme.gradient.bg, minHeight: "100vh", color: theme.colors.text }}>
       
       {/* ═══ NAVIGATION ═══ */}
-      <nav className="sticky top-0 z-50 border-b backdrop-blur-xl" 
-        style={{ background: "rgba(10, 1, 24, 0.85)", borderColor: theme.colors.border }}>
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="flex h-16 items-center justify-between">
+      <nav 
+        className="fixed top-0 left-0 right-0 z-50 transition-all duration-300" 
+        style={{ 
+          background: scrolled ? "rgba(10, 1, 24, 0.95)" : "rgba(10, 1, 24, 0.80)",
+          backdropFilter: "blur(20px)",
+          borderBottom: `1px solid ${scrolled ? "rgba(0, 255, 209, 0.2)" : theme.colors.border}`,
+          boxShadow: scrolled ? "0 4px 24px rgba(0, 0, 0, 0.3)" : "none",
+        }}>
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="flex h-16 sm:h-18 items-center justify-between">
             
             {/* Logo */}
-            <Link to="/" className="flex items-center gap-3">
-              <img src="/logo.jpeg" alt="MindTalk AI" 
-                className="h-10 w-10 rounded-xl object-cover ring-2 ring-white/10" />
-              <span className="text-lg font-bold">MindTalk AI</span>
+            <Link to="/" className="group flex items-center gap-2.5 sm:gap-3 transition-transform hover:scale-105">
+              <div className="relative">
+                <img 
+                  src="/logo.jpeg" 
+                  alt="MindTalk AI" 
+                  className="h-9 w-9 sm:h-10 sm:w-10 rounded-xl object-cover transition-all" 
+                  style={{ 
+                    boxShadow: scrolled 
+                      ? `0 0 20px ${theme.colors.primary}40` 
+                      : `0 0 0px ${theme.colors.primary}40`,
+                  }}
+                />
+                {/* Glow effect on hover */}
+                <div 
+                  className="absolute inset-0 rounded-xl opacity-0 transition-opacity group-hover:opacity-100"
+                  style={{ boxShadow: `0 0 30px ${theme.colors.primary}60` }}
+                />
+              </div>
+              <div className="flex flex-col">
+                <span className="text-base sm:text-lg font-bold leading-none">MindTalk AI</span>
+                <span className="hidden sm:block text-[10px] font-medium leading-none mt-0.5" 
+                  style={{ color: theme.colors.textMuted }}>
+                  Health Companion
+                </span>
+              </div>
             </Link>
 
             {/* Desktop Nav */}
-            <div className="hidden items-center gap-8 md:flex">
-              <a href="#features" className="text-sm font-medium transition-colors hover:text-white" 
-                style={{ color: theme.colors.textDim }}>Features</a>
-              <a href="#how-it-works" className="text-sm font-medium transition-colors hover:text-white" 
-                style={{ color: theme.colors.textDim }}>How It Works</a>
-              <a href="#languages" className="text-sm font-medium transition-colors hover:text-white" 
-                style={{ color: theme.colors.textDim }}>Languages</a>
-              <a href="#pricing" className="text-sm font-medium transition-colors hover:text-white" 
-                style={{ color: theme.colors.textDim }}>Pricing</a>
-              <Link to="/auth" 
-                className="rounded-full px-6 py-2.5 text-sm font-bold transition-all hover:scale-105"
-                style={{ background: theme.colors.primary, color: theme.colors.bg }}>
-                Get Started
-              </Link>
+            <div className="hidden lg:flex items-center gap-1">
+              <NavLink href="#features">Features</NavLink>
+              <NavLink href="#how-it-works">How It Works</NavLink>
+              <NavLink href="#languages">Languages</NavLink>
+              <NavLink href="#pricing">Pricing</NavLink>
             </div>
 
-            {/* Mobile Menu Button */}
-            <button onClick={() => setMenuOpen(!menuOpen)} 
-              className="rounded-lg p-2 transition-colors hover:bg-white/5 md:hidden">
-              {menuOpen ? <MdClose size={24} /> : <MdMenu size={24} />}
-            </button>
+            {/* Desktop CTA + Mobile Menu */}
+            <div className="flex items-center gap-3">
+              {/* Desktop CTA */}
+              <Link 
+                to="/auth" 
+                className="hidden sm:inline-flex items-center gap-2 rounded-full px-5 py-2 sm:px-6 sm:py-2.5 text-xs sm:text-sm font-bold transition-all hover:scale-105 hover:shadow-lg"
+                style={{ 
+                  background: theme.colors.primary, 
+                  color: theme.colors.bg,
+                  boxShadow: `0 0 20px ${theme.colors.primary}30`,
+                }}>
+                <span>Get Started</span>
+                <FaArrowRight size={12} />
+              </Link>
+
+              {/* Mobile Menu Button */}
+              <button 
+                onClick={() => setMenuOpen(!menuOpen)} 
+                className="inline-flex lg:hidden items-center justify-center rounded-xl p-2 transition-all hover:bg-white/5 active:scale-95"
+                style={{ border: menuOpen ? `1px solid ${theme.colors.primary}` : "1px solid transparent" }}
+                aria-label="Toggle menu">
+                {menuOpen ? <MdClose size={24} /> : <MdMenu size={24} />}
+              </button>
+            </div>
           </div>
 
-          {/* Mobile Menu */}
-          {menuOpen && (
-            <div className="border-t py-4 md:hidden" style={{ borderColor: theme.colors.border }}>
-              <div className="flex flex-col gap-4">
-                <a href="#features" onClick={() => setMenuOpen(false)} 
-                  className="text-sm font-medium">Features</a>
-                <a href="#how-it-works" onClick={() => setMenuOpen(false)} 
-                  className="text-sm font-medium">How It Works</a>
-                <a href="#languages" onClick={() => setMenuOpen(false)} 
-                  className="text-sm font-medium">Languages</a>
-                <a href="#pricing" onClick={() => setMenuOpen(false)} 
-                  className="text-sm font-medium">Pricing</a>
-                <Link to="/auth" onClick={() => setMenuOpen(false)}
-                  className="rounded-full px-6 py-3 text-center text-sm font-bold"
-                  style={{ background: theme.colors.primary, color: theme.colors.bg }}>
-                  Get Started
-                </Link>
-              </div>
+          {/* Mobile Menu Dropdown */}
+          <div 
+            className={`lg:hidden overflow-hidden transition-all duration-300 ${
+              menuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+            }`}>
+            <div 
+              className="py-4 space-y-1 border-t" 
+              style={{ borderColor: theme.colors.border }}>
+              <MobileNavLink href="#features" onClick={() => setMenuOpen(false)}>
+                <IoSparkles size={18} />
+                Features
+              </MobileNavLink>
+              <MobileNavLink href="#how-it-works" onClick={() => setMenuOpen(false)}>
+                <HiSparkles size={18} />
+                How It Works
+              </MobileNavLink>
+              <MobileNavLink href="#languages" onClick={() => setMenuOpen(false)}>
+                <MdTranslate size={18} />
+                Languages
+              </MobileNavLink>
+              <MobileNavLink href="#pricing" onClick={() => setMenuOpen(false)}>
+                <FaCheck size={16} />
+                Pricing
+              </MobileNavLink>
+              
+              {/* Mobile CTA */}
+              <Link 
+                to="/auth" 
+                onClick={() => setMenuOpen(false)}
+                className="flex items-center justify-center gap-2 mt-4 rounded-full px-6 py-3 text-sm font-bold transition-all active:scale-95"
+                style={{ background: theme.colors.primary, color: theme.colors.bg }}>
+                Get Started Free
+                <FaArrowRight size={14} />
+              </Link>
             </div>
-          )}
+          </div>
         </div>
       </nav>
 
+      {/* Spacer to prevent content jump */}
+      <div className="h-16 sm:h-18" />
+
       {/* ═══ HERO SECTION ═══ */}
-      <section className="relative overflow-hidden px-6 py-24 lg:py-32">
+      <section className="relative overflow-hidden px-4 sm:px-6 lg:px-8 py-16 sm:py-20 md:py-24 lg:py-32">
         
-        {/* Background Blobs */}
+        {/* Background Effects */}
         <div className="pointer-events-none absolute inset-0">
-          <div className="absolute left-1/4 top-0 h-[500px] w-[500px] rounded-full opacity-20 blur-[100px]"
-            style={{ background: theme.colors.secondary }} />
-          <div className="absolute right-1/4 top-1/3 h-[500px] w-[500px] rounded-full opacity-20 blur-[100px]"
-            style={{ background: theme.colors.primary }} />
+          {/* Animated gradient blobs */}
+          <div 
+            className="absolute left-1/4 -top-20 sm:top-0 h-[300px] w-[300px] sm:h-[400px] sm:w-[400px] lg:h-[600px] lg:w-[600px] rounded-full opacity-20 blur-[80px] sm:blur-[120px] animate-pulse"
+            style={{ background: theme.colors.secondary, animationDuration: "4s" }} 
+          />
+          <div 
+            className="absolute right-1/4 top-1/3 h-[250px] w-[250px] sm:h-[350px] sm:w-[350px] lg:h-[500px] lg:w-[500px] rounded-full opacity-20 blur-[80px] sm:blur-[100px] animate-pulse"
+            style={{ background: theme.colors.primary, animationDuration: "5s", animationDelay: "1s" }} 
+          />
         </div>
 
         <div className="relative mx-auto max-w-7xl">
-          <div className="grid items-center gap-16 lg:grid-cols-2">
+          <div className="grid items-center gap-8 sm:gap-12 lg:grid-cols-2 lg:gap-16">
             
-            {/* Left: Content */}
-            <div className="text-center lg:text-left">
+            {/* ─── Left: Content ─── */}
+            <div className="text-center lg:text-left order-2 lg:order-1">
               
               {/* Badge */}
-              <div className="mb-6 inline-flex items-center gap-2 rounded-full px-4 py-2 text-xs font-bold uppercase tracking-wider"
+              <div 
+                className="mb-4 sm:mb-6 inline-flex items-center gap-2 rounded-full px-3 sm:px-4 py-1.5 sm:py-2 text-[10px] sm:text-xs font-bold uppercase tracking-wider"
                 style={{ background: theme.colors.primaryDim, border: `1px solid ${theme.colors.primary}40` }}>
-                <span className="flex h-2 w-2">
-                  <span className="absolute inline-flex h-2 w-2 animate-ping rounded-full opacity-75"
-                    style={{ background: theme.colors.primary }} />
-                  <span className="relative inline-flex h-2 w-2 rounded-full"
-                    style={{ background: theme.colors.primary }} />
+                <span className="flex h-2 w-2 relative">
+                  <span 
+                    className="absolute inline-flex h-full w-full animate-ping rounded-full opacity-75"
+                    style={{ background: theme.colors.primary }} 
+                  />
+                  <span 
+                    className="relative inline-flex h-2 w-2 rounded-full"
+                    style={{ background: theme.colors.primary }} 
+                  />
                 </span>
-                AI-Powered Health Companion
+                <span className="hidden sm:inline">AI-Powered Health Companion</span>
+                <span className="sm:hidden">AI Health Companion</span>
               </div>
 
               {/* Headline */}
-              <h1 className="mb-6 text-5xl font-black leading-[1.1] tracking-tight sm:text-6xl lg:text-7xl">
-                Your Health,<br />
-                <span style={{
-                  background: theme.gradient.primary,
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                  backgroundClip: "text",
-                }}>
+              <h1 className="mb-4 sm:mb-6 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black leading-[1.1] tracking-tight">
+                <span className="block">Your Health,</span>
+                <span 
+                  className="block"
+                  style={{
+                    background: theme.gradient.primary,
+                    WebkitBackgroundClip: "text",
+                    WebkitTextFillColor: "transparent",
+                    backgroundClip: "text",
+                  }}>
                   Your Voice
                 </span>
               </h1>
 
               {/* Description */}
-              <p className="mb-10 text-lg leading-relaxed sm:text-xl" style={{ color: theme.colors.textDim }}>
+              <p 
+                className="mb-8 sm:mb-10 text-base sm:text-lg lg:text-xl leading-relaxed max-w-xl mx-auto lg:mx-0" 
+                style={{ color: theme.colors.textDim }}>
                 Talk about how you feel. Track your mood, symptoms, and wellness in{" "}
-                <strong className="font-semibold text-white">English</strong>,{" "}
-                <strong className="font-semibold text-white">Twi</strong>, or{" "}
-                <strong className="font-semibold text-white">Dagbani</strong>.
+                <strong className="font-semibold" style={{ color: theme.colors.text }}>English</strong>,{" "}
+                <strong className="font-semibold" style={{ color: theme.colors.text }}>Twi</strong>, or{" "}
+                <strong className="font-semibold" style={{ color: theme.colors.text }}>Dagbani</strong>.
               </p>
 
               {/* CTA Buttons */}
-              <div className="flex flex-col gap-4 sm:flex-row sm:justify-center lg:justify-start">
-                <Link to="/auth"
-                  className="group inline-flex items-center justify-center gap-3 rounded-full px-8 py-4 text-base font-bold shadow-xl transition-all hover:scale-105"
-                  style={{ background: theme.colors.primary, color: theme.colors.bg, boxShadow: `0 0 40px ${theme.colors.primary}40` }}>
-                  Try MindTalk AI Free
-                  <FaArrowRight className="transition-transform group-hover:translate-x-1" size={16} />
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 items-stretch sm:items-center justify-center lg:justify-start mb-8 sm:mb-12">
+                <Link 
+                  to="/auth"
+                  className="group inline-flex items-center justify-center gap-2 sm:gap-3 rounded-full px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base font-bold shadow-xl transition-all hover:scale-105 active:scale-95"
+                  style={{ 
+                    background: theme.colors.primary, 
+                    color: theme.colors.bg, 
+                    boxShadow: `0 8px 32px ${theme.colors.primary}40` 
+                  }}>
+                  <span>Try MindTalk AI Free</span>
+                  <FaArrowRight className="transition-transform group-hover:translate-x-1" size={14} />
                 </Link>
-                <a href="#features"
-                  className="inline-flex items-center justify-center gap-2 rounded-full px-8 py-4 text-base font-semibold transition-all hover:bg-white/5"
+                <a 
+                  href="#features"
+                  className="inline-flex items-center justify-center gap-2 rounded-full px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base font-semibold transition-all hover:bg-white/5 active:scale-95"
                   style={{ border: `2px solid ${theme.colors.border}` }}>
-                  Learn More
+                  <span>Learn More</span>
+                  <IoSparkles size={16} />
                 </a>
               </div>
 
               {/* Trust Indicators */}
-              <div className="mt-12 flex flex-wrap items-center justify-center gap-8 lg:justify-start"
-                style={{ color: theme.colors.textMuted }}>
-                <div className="flex items-center gap-2.5 text-sm font-medium">
-                  <div className="flex h-8 w-8 items-center justify-center rounded-lg"
-                    style={{ background: theme.colors.primaryDim }}>
-                    <MdShield size={16} style={{ color: theme.colors.primary }} />
-                  </div>
-                  Private & Encrypted
-                </div>
-                <div className="flex items-center gap-2.5 text-sm font-medium">
-                  <div className="flex h-8 w-8 items-center justify-center rounded-lg"
-                    style={{ background: theme.colors.primaryDim }}>
-                    <MdTranslate size={16} style={{ color: theme.colors.primary }} />
-                  </div>
-                  13+ Languages
-                </div>
-                <div className="flex items-center gap-2.5 text-sm font-medium">
-                  <div className="flex h-8 w-8 items-center justify-center rounded-lg"
-                    style={{ background: theme.colors.primaryDim }}>
-                    <HiLightningBolt size={16} style={{ color: theme.colors.primary }} />
-                  </div>
-                  AI Powered
-                </div>
+              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 sm:gap-6 lg:gap-8">
+                <TrustBadge icon={MdShield} text="Private & Encrypted" />
+                <TrustBadge icon={MdTranslate} text="13+ Languages" />
+                <TrustBadge icon={HiLightningBolt} text="AI Powered" />
               </div>
             </div>
 
-            {/* Right: Hero Visual */}
-            <div className="relative flex justify-center lg:justify-end">
-              <div className="relative">
+            {/* ─── Right: Hero Visual ─── */}
+            <div className="relative flex justify-center lg:justify-end order-1 lg:order-2">
+              <div className="relative w-full max-w-[280px] sm:max-w-[350px] lg:max-w-[450px]">
                 
                 {/* Main Circle */}
-                <div className="relative flex h-[400px] w-[400px] items-center justify-center rounded-full"
+                <div 
+                  className="relative flex aspect-square items-center justify-center rounded-full"
                   style={{
                     background: `radial-gradient(circle, ${theme.colors.glass}, transparent)`,
                     border: `1px solid ${theme.colors.border}`,
                   }}>
                   
                   {/* Center Icon */}
-                  <div className="flex h-32 w-32 items-center justify-center rounded-full"
+                  <div 
+                    className="flex h-20 w-20 sm:h-28 sm:w-28 lg:h-36 lg:w-36 items-center justify-center rounded-full transition-transform hover:scale-110"
                     style={{
                       background: theme.colors.primary,
-                      boxShadow: `0 0 60px ${theme.colors.primary}60`,
+                      boxShadow: `0 0 40px ${theme.colors.primary}60, 0 0 80px ${theme.colors.primary}30`,
                     }}>
-                    <MdChat size={64} style={{ color: theme.colors.bg }} />
+                    <MdChat className="w-10 h-10 sm:w-14 sm:h-14 lg:w-16 lg:h-16" style={{ color: theme.colors.bg }} />
                   </div>
 
-                  {/* Floating Icons */}
-                  <FloatingIcon icon={MdMic} color={theme.colors.primary} 
-                    position="top-6 left-6" delay="0s" />
-                  <FloatingIcon icon={FaHeartbeat} color={theme.colors.accent} 
-                    position="top-6 right-6" delay="0.7s" />
-                  <FloatingIcon icon={FaBrain} color={theme.colors.secondary} 
-                    position="bottom-6 left-6" delay="1.4s" />
-                  <FloatingIcon icon={IoStatsChart} color={theme.colors.primary} 
-                    position="bottom-6 right-6" delay="2.1s" />
+                  {/* Floating Icons - Responsive Sizes */}
+                  <FloatingIconResponsive 
+                    icon={MdMic} 
+                    color={theme.colors.primary} 
+                    position="top-4 left-4 sm:top-6 sm:left-6" 
+                    delay="0s" 
+                  />
+                  <FloatingIconResponsive 
+                    icon={FaHeartbeat} 
+                    color={theme.colors.accent} 
+                    position="top-4 right-4 sm:top-6 sm:right-6" 
+                    delay="0.7s" 
+                  />
+                  <FloatingIconResponsive 
+                    icon={FaBrain} 
+                    color={theme.colors.secondary} 
+                    position="bottom-4 left-4 sm:bottom-6 sm:left-6" 
+                    delay="1.4s" 
+                  />
+                  <FloatingIconResponsive 
+                    icon={IoStatsChart} 
+                    color={theme.colors.primary} 
+                    position="bottom-4 right-4 sm:bottom-6 sm:right-6" 
+                    delay="2.1s" 
+                  />
                 </div>
 
-                {/* Pulse Rings */}
-                <div className="absolute inset-0 animate-ping rounded-full opacity-20"
-                  style={{ border: `2px solid ${theme.colors.primary}`, animationDuration: "3s" }} />
-                <div className="absolute inset-8 animate-ping rounded-full opacity-20"
-                  style={{ border: `2px solid ${theme.colors.secondary}`, animationDuration: "3s", animationDelay: "1s" }} />
+                {/* Pulse Rings - Responsive */}
+                <div 
+                  className="absolute inset-0 animate-ping rounded-full opacity-20"
+                  style={{ border: `2px solid ${theme.colors.primary}`, animationDuration: "3s" }} 
+                />
+                <div 
+                  className="absolute inset-4 sm:inset-8 animate-ping rounded-full opacity-20"
+                  style={{ border: `2px solid ${theme.colors.secondary}`, animationDuration: "3s", animationDelay: "1.5s" }} 
+                />
               </div>
             </div>
           </div>
@@ -683,6 +777,72 @@ function Landing() {
 /* ═══════════════════════════════════════════════════════════════
    SUB-COMPONENTS
    ═══════════════════════════════════════════════════════════════ */
+
+// Navigation Link Component
+function NavLink({ href, children }: { href: string; children: React.ReactNode }) {
+  return (
+    <a 
+      href={href} 
+      className="relative px-3 py-2 text-sm font-medium transition-all hover:text-white group"
+      style={{ color: theme.colors.textDim }}>
+      {children}
+      <span 
+        className="absolute bottom-0 left-0 h-0.5 w-0 transition-all duration-300 group-hover:w-full"
+        style={{ background: theme.colors.primary }}
+      />
+    </a>
+  );
+}
+
+// Mobile Navigation Link Component
+function MobileNavLink({ href, onClick, children }: { 
+  href: string; 
+  onClick: () => void; 
+  children: React.ReactNode;
+}) {
+  return (
+    <a 
+      href={href} 
+      onClick={onClick}
+      className="flex items-center gap-3 px-4 py-3 text-sm font-medium rounded-xl transition-all hover:bg-white/5"
+      style={{ color: theme.colors.text }}>
+      {children}
+    </a>
+  );
+}
+
+// Trust Badge Component
+function TrustBadge({ icon: Icon, text }: { icon: any; text: string }) {
+  return (
+    <div className="flex items-center gap-2 text-xs sm:text-sm font-medium" style={{ color: theme.colors.textMuted }}>
+      <div 
+        className="flex h-7 w-7 sm:h-8 sm:w-8 items-center justify-center rounded-lg transition-transform hover:scale-110"
+        style={{ background: theme.colors.primaryDim }}>
+        <Icon className="w-3 h-3 sm:w-4 sm:h-4" style={{ color: theme.colors.primary }} />
+      </div>
+      <span className="hidden sm:inline">{text}</span>
+      <span className="sm:hidden">{text.split(' ')[0]}</span>
+    </div>
+  );
+}
+
+// Responsive Floating Icon Component
+function FloatingIconResponsive({ icon: Icon, color, position, delay }: {
+  icon: any; color: string; position: string; delay: string;
+}) {
+  return (
+    <div
+      className={`absolute ${position} flex h-12 w-12 sm:h-14 sm:w-14 lg:h-16 lg:w-16 items-center justify-center rounded-full transition-transform hover:scale-110`}
+      style={{
+        background: theme.colors.glass,
+        border: `1px solid ${theme.colors.border}`,
+        animation: "float 3s ease-in-out infinite",
+        animationDelay: delay,
+      }}>
+      <Icon className="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7" style={{ color }} />
+    </div>
+  );
+}
 
 function FloatingIcon({ icon: Icon, color, position, delay }: {
   icon: any; color: string; position: string; delay: string;
