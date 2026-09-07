@@ -387,7 +387,7 @@ function Landing() {
 
             {/* ─── Right: Hero Visual ─── */}
             <div className="relative flex justify-center lg:justify-end order-1 lg:order-2">
-              <div className="relative w-full max-w-[280px] sm:max-w-[350px] lg:max-w-[450px]">
+              <div className="relative w-full max-w-[180px] sm:max-w-[200px] md:max-w-[220px]">
                 
                 {/* Main Circle */}
                 <div 
@@ -399,37 +399,37 @@ function Landing() {
                   
                   {/* Center Icon */}
                   <div 
-                    className="flex h-20 w-20 sm:h-28 sm:w-28 lg:h-36 lg:w-36 items-center justify-center rounded-full transition-transform hover:scale-110"
+                    className="flex h-12 w-12 sm:h-14 sm:w-14 md:h-16 md:w-16 items-center justify-center rounded-full transition-transform hover:scale-110"
                     style={{
                       background: theme.colors.primary,
-                      boxShadow: `0 0 40px ${theme.colors.primary}60, 0 0 80px ${theme.colors.primary}30`,
+                      boxShadow: `0 0 30px ${theme.colors.primary}50, 0 0 60px ${theme.colors.primary}20`,
                     }}>
-                    <MdChat className="w-10 h-10 sm:w-14 sm:h-14 lg:w-16 lg:h-16" style={{ color: theme.colors.bg }} />
+                    <MdChat className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8" style={{ color: theme.colors.bg }} />
                   </div>
 
                   {/* Floating Icons - Responsive Sizes */}
                   <FloatingIconResponsive 
                     icon={MdMic} 
                     color={theme.colors.primary} 
-                    position="top-4 left-4 sm:top-6 sm:left-6" 
+                    position="top-2 left-2 sm:top-3 sm:left-3" 
                     delay="0s" 
                   />
                   <FloatingIconResponsive 
                     icon={FaHeartbeat} 
                     color={theme.colors.accent} 
-                    position="top-4 right-4 sm:top-6 sm:right-6" 
+                    position="top-2 right-2 sm:top-3 sm:right-3" 
                     delay="0.7s" 
                   />
                   <FloatingIconResponsive 
                     icon={FaBrain} 
                     color={theme.colors.secondary} 
-                    position="bottom-4 left-4 sm:bottom-6 sm:left-6" 
+                    position="bottom-2 left-2 sm:bottom-3 sm:left-3" 
                     delay="1.4s" 
                   />
                   <FloatingIconResponsive 
                     icon={IoStatsChart} 
                     color={theme.colors.primary} 
-                    position="bottom-4 right-4 sm:bottom-6 sm:right-6" 
+                    position="bottom-2 right-2 sm:bottom-3 sm:right-3" 
                     delay="2.1s" 
                   />
                 </div>
@@ -437,11 +437,11 @@ function Landing() {
                 {/* Pulse Rings - Responsive */}
                 <div 
                   className="absolute inset-0 animate-ping rounded-full opacity-20"
-                  style={{ border: `2px solid ${theme.colors.primary}`, animationDuration: "3s" }} 
+                  style={{ border: `1px solid ${theme.colors.primary}`, animationDuration: "3s" }} 
                 />
                 <div 
-                  className="absolute inset-4 sm:inset-8 animate-ping rounded-full opacity-20"
-                  style={{ border: `2px solid ${theme.colors.secondary}`, animationDuration: "3s", animationDelay: "1.5s" }} 
+                  className="absolute inset-2 sm:inset-4 animate-ping rounded-full opacity-20"
+                  style={{ border: `1px solid ${theme.colors.secondary}`, animationDuration: "3s", animationDelay: "1.5s" }} 
                 />
               </div>
             </div>
@@ -832,14 +832,14 @@ function FloatingIconResponsive({ icon: Icon, color, position, delay }: {
 }) {
   return (
     <div
-      className={`absolute ${position} flex h-12 w-12 sm:h-14 sm:w-14 lg:h-16 lg:w-16 items-center justify-center rounded-full transition-transform hover:scale-110`}
+      className={`absolute ${position} flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-full transition-transform hover:scale-110`}
       style={{
         background: theme.colors.glass,
         border: `1px solid ${theme.colors.border}`,
         animation: "float 3s ease-in-out infinite",
         animationDelay: delay,
       }}>
-      <Icon className="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7" style={{ color }} />
+      <Icon className="w-3.5 h-3.5 sm:w-4 sm:h-4" style={{ color }} />
     </div>
   );
 }
