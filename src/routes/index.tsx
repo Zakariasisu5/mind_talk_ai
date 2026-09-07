@@ -291,7 +291,7 @@ function Landing() {
       <div className="h-16 sm:h-18" />
 
       {/* ═══ HERO SECTION ═══ */}
-      <section className="relative overflow-hidden px-4 sm:px-6 lg:px-8 py-16 sm:py-20 md:py-24 lg:py-32">
+      <section className="relative overflow-hidden px-4 sm:px-6 lg:px-8 py-24 sm:py-32 md:py-40 lg:py-48">
         
         {/* Background Effects */}
         <div className="pointer-events-none absolute inset-0">
@@ -306,154 +306,88 @@ function Landing() {
           />
         </div>
 
-        <div className="relative mx-auto max-w-7xl">
-          <div className="grid items-center gap-8 sm:gap-12 lg:grid-cols-2 lg:gap-16">
+        <div className="relative mx-auto max-w-5xl">
+          <div className="text-center">
             
-            {/* ─── Left: Content ─── */}
-            <div className="text-center lg:text-left order-2 lg:order-1">
-              
-              {/* Badge */}
-              <div 
-                className="mb-4 sm:mb-6 inline-flex items-center gap-2 rounded-full px-3 sm:px-4 py-1.5 sm:py-2 text-[10px] sm:text-xs font-bold uppercase tracking-wider"
-                style={{ background: theme.colors.primaryDim, border: `1px solid ${theme.colors.primary}40` }}>
-                <span className="flex h-2 w-2 relative">
-                  <span 
-                    className="absolute inline-flex h-full w-full animate-ping rounded-full opacity-75"
-                    style={{ background: theme.colors.primary }} 
-                  />
-                  <span 
-                    className="relative inline-flex h-2 w-2 rounded-full"
-                    style={{ background: theme.colors.primary }} 
-                  />
-                </span>
-                <span className="hidden sm:inline">AI-Powered Health Companion</span>
-                <span className="sm:hidden">AI Health Companion</span>
-              </div>
-
-              {/* Headline */}
-              <h1 className="mb-4 sm:mb-6 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black leading-[1.1] tracking-tight">
-                <span className="block">Your Health,</span>
+            {/* Badge */}
+            <div 
+              className="mb-8 sm:mb-10 inline-flex items-center gap-2 rounded-full px-4 sm:px-5 py-2 sm:py-2.5 text-xs sm:text-sm font-bold uppercase tracking-wider"
+              style={{ background: theme.colors.primaryDim, border: `1px solid ${theme.colors.primary}40` }}>
+              <span className="flex h-2 w-2 relative">
                 <span 
-                  className="block"
-                  style={{
-                    background: theme.gradient.primary,
-                    WebkitBackgroundClip: "text",
-                    WebkitTextFillColor: "transparent",
-                    backgroundClip: "text",
-                  }}>
-                  Your Voice
-                </span>
-              </h1>
-
-              {/* Description */}
-              <p 
-                className="mb-8 sm:mb-10 text-base sm:text-lg lg:text-xl leading-relaxed max-w-xl mx-auto lg:mx-0" 
-                style={{ color: theme.colors.textDim }}>
-                Talk about how you feel. Track your mood, symptoms, and wellness in{" "}
-                <strong className="font-semibold" style={{ color: theme.colors.text }}>English</strong>,{" "}
-                <strong className="font-semibold" style={{ color: theme.colors.text }}>Twi</strong>, or{" "}
-                <strong className="font-semibold" style={{ color: theme.colors.text }}>Dagbani</strong>.
-              </p>
-
-              {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 items-stretch sm:items-center justify-center lg:justify-start mb-8 sm:mb-12">
-                <Link 
-                  to="/auth"
-                  className="group inline-flex items-center justify-center gap-2 sm:gap-3 rounded-full px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base font-bold shadow-xl transition-all hover:scale-105 active:scale-95"
-                  style={{ 
-                    background: theme.colors.primary, 
-                    color: theme.colors.bg, 
-                    boxShadow: `0 8px 32px ${theme.colors.primary}40` 
-                  }}>
-                  <span>Try MindTalk AI Free</span>
-                  <FaArrowRight className="transition-transform group-hover:translate-x-1" size={14} />
-                </Link>
-                <a 
-                  href="#features"
-                  className="inline-flex items-center justify-center gap-2 rounded-full px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base font-semibold transition-all hover:bg-white/5 active:scale-95"
-                  style={{ border: `2px solid ${theme.colors.border}` }}>
-                  <span>Learn More</span>
-                  <IoSparkles size={16} />
-                </a>
-              </div>
-
-              {/* Trust Indicators */}
-              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 sm:gap-6 lg:gap-8">
-                <TrustBadge icon={MdShield} text="Private & Encrypted" />
-                <TrustBadge icon={MdTranslate} text="13+ Languages" />
-                <TrustBadge icon={HiLightningBolt} text="AI Powered" />
-              </div>
+                  className="absolute inline-flex h-full w-full animate-ping rounded-full opacity-75"
+                  style={{ background: theme.colors.primary }} 
+                />
+                <span 
+                  className="relative inline-flex h-2 w-2 rounded-full"
+                  style={{ background: theme.colors.primary }} 
+                />
+              </span>
+              AI-Powered Health Companion
             </div>
 
-            {/* ─── Right: Hero Visual ─── */}
-            <div className="relative flex justify-center lg:justify-end order-1 lg:order-2">
-              <div className="relative w-full max-w-[180px] sm:max-w-[200px] md:max-w-[220px]">
-                
-                {/* Main Circle */}
-                <div 
-                  className="relative flex aspect-square items-center justify-center rounded-full"
-                  style={{
-                    background: `radial-gradient(circle, ${theme.colors.glass}, transparent)`,
-                    border: `1px solid ${theme.colors.border}`,
-                  }}>
-                  
-                  {/* Center Icon */}
-                  <div 
-                    className="flex h-12 w-12 sm:h-14 sm:w-14 md:h-16 md:w-16 items-center justify-center rounded-full transition-transform hover:scale-110"
-                    style={{
-                      background: theme.colors.primary,
-                      boxShadow: `0 0 30px ${theme.colors.primary}50, 0 0 60px ${theme.colors.primary}20`,
-                    }}>
-                    <MdChat className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8" style={{ color: theme.colors.bg }} />
-                  </div>
+            {/* Headline */}
+            <h1 className="mb-8 sm:mb-10 text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black leading-[1.05] tracking-tight">
+              <span className="block mb-2">Your Health,</span>
+              <span 
+                className="block"
+                style={{
+                  background: theme.gradient.primary,
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                }}>
+                Your Voice
+              </span>
+            </h1>
 
-                  {/* Floating Icons - Responsive Sizes */}
-                  <FloatingIconResponsive 
-                    icon={MdMic} 
-                    color={theme.colors.primary} 
-                    position="top-2 left-2 sm:top-3 sm:left-3" 
-                    delay="0s" 
-                  />
-                  <FloatingIconResponsive 
-                    icon={FaHeartbeat} 
-                    color={theme.colors.accent} 
-                    position="top-2 right-2 sm:top-3 sm:right-3" 
-                    delay="0.7s" 
-                  />
-                  <FloatingIconResponsive 
-                    icon={FaBrain} 
-                    color={theme.colors.secondary} 
-                    position="bottom-2 left-2 sm:bottom-3 sm:left-3" 
-                    delay="1.4s" 
-                  />
-                  <FloatingIconResponsive 
-                    icon={IoStatsChart} 
-                    color={theme.colors.primary} 
-                    position="bottom-2 right-2 sm:bottom-3 sm:right-3" 
-                    delay="2.1s" 
-                  />
-                </div>
+            {/* Description */}
+            <p 
+              className="mb-12 sm:mb-16 text-lg sm:text-xl lg:text-2xl leading-relaxed max-w-3xl mx-auto" 
+              style={{ color: theme.colors.textDim }}>
+              Talk about how you feel. Track your mood, symptoms, and wellness in{" "}
+              <strong className="font-semibold" style={{ color: theme.colors.text }}>English</strong>,{" "}
+              <strong className="font-semibold" style={{ color: theme.colors.text }}>Twi</strong>, or{" "}
+              <strong className="font-semibold" style={{ color: theme.colors.text }}>Dagbani</strong>.
+            </p>
 
-                {/* Pulse Rings - Responsive */}
-                <div 
-                  className="absolute inset-0 animate-ping rounded-full opacity-20"
-                  style={{ border: `1px solid ${theme.colors.primary}`, animationDuration: "3s" }} 
-                />
-                <div 
-                  className="absolute inset-2 sm:inset-4 animate-ping rounded-full opacity-20"
-                  style={{ border: `1px solid ${theme.colors.secondary}`, animationDuration: "3s", animationDelay: "1.5s" }} 
-                />
-              </div>
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4 items-stretch sm:items-center justify-center mb-16 sm:mb-20">
+              <Link 
+                to="/auth"
+                className="group inline-flex items-center justify-center gap-3 rounded-full px-8 sm:px-10 py-4 sm:py-5 text-base sm:text-lg font-bold shadow-xl transition-all hover:scale-105 active:scale-95"
+                style={{ 
+                  background: theme.colors.primary, 
+                  color: theme.colors.bg, 
+                  boxShadow: `0 8px 32px ${theme.colors.primary}40` 
+                }}>
+                <span>Try MindTalk AI Free</span>
+                <FaArrowRight className="transition-transform group-hover:translate-x-1" size={18} />
+              </Link>
+              <a 
+                href="#features"
+                className="inline-flex items-center justify-center gap-2 rounded-full px-8 sm:px-10 py-4 sm:py-5 text-base sm:text-lg font-semibold transition-all hover:bg-white/5 active:scale-95"
+                style={{ border: `2px solid ${theme.colors.border}` }}>
+                <span>Learn More</span>
+                <IoSparkles size={20} />
+              </a>
+            </div>
+
+            {/* Trust Indicators */}
+            <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-8 lg:gap-12">
+              <TrustBadge icon={MdShield} text="Private & Encrypted" />
+              <TrustBadge icon={MdTranslate} text="13+ Languages" />
+              <TrustBadge icon={HiLightningBolt} text="AI Powered" />
             </div>
           </div>
         </div>
       </section>
 
       {/* ═══ STATS BAR ═══ */}
-      <section className="border-y py-12" 
+      <section className="border-y py-16 sm:py-20" 
         style={{ borderColor: theme.colors.border, background: theme.colors.glass }}>
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
+          <div className="grid grid-cols-2 gap-12 md:grid-cols-4">
             <StatCard value="13+" label="Languages Supported" />
             <StatCard value="100%" label="Private & Secure" />
             <StatCard value="24/7" label="AI Available" />
@@ -463,14 +397,27 @@ function Landing() {
       </section>
 
       {/* ═══ FEATURES SECTION ═══ */}
-      <section id="features" className="px-6 py-24 lg:px-8">
-        <div className="mx-auto max-w-7xl">
+      <section id="features" className="relative px-6 py-24 sm:py-28 lg:py-32 lg:px-8 overflow-hidden">
+        
+        {/* Background decoration */}
+        <div className="pointer-events-none absolute inset-0">
+          <div 
+            className="absolute left-0 top-1/4 h-96 w-96 rounded-full opacity-10 blur-3xl"
+            style={{ background: theme.colors.primary }} 
+          />
+          <div 
+            className="absolute right-0 bottom-1/4 h-96 w-96 rounded-full opacity-10 blur-3xl"
+            style={{ background: theme.colors.secondary }} 
+          />
+        </div>
+
+        <div className="relative mx-auto max-w-7xl">
           
           {/* Section Header */}
-          <div className="mb-16 text-center">
-            <div className="mb-4 inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs font-bold uppercase tracking-wider"
+          <div className="mb-16 sm:mb-20 text-center">
+            <div className="mb-5 inline-flex items-center gap-2 rounded-full px-4 py-2 text-xs font-bold uppercase tracking-wider"
               style={{ background: theme.colors.primaryDim, color: theme.colors.primary }}>
-              <HiSparkles size={14} />
+              <HiSparkles size={16} />
               Features
             </div>
             <h2 className="mb-6 text-4xl font-black sm:text-5xl lg:text-6xl">
@@ -483,32 +430,38 @@ function Landing() {
                 Better Health
               </span>
             </h2>
-            <p className="mx-auto max-w-3xl text-lg leading-relaxed" style={{ color: theme.colors.textDim }}>
+            <p className="mx-auto max-w-3xl text-lg sm:text-xl leading-relaxed" style={{ color: theme.colors.textDim }}>
               Voice logging, AI analysis, mood tracking, and brain games — all in one private, multilingual platform designed for your wellness journey.
             </p>
           </div>
 
           {/* Features Grid */}
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {FEATURES.map((feature) => (
-              <FeatureCard key={feature.title} {...feature} />
+            {FEATURES.map((feature, index) => (
+              <div 
+                key={feature.title}
+                style={{ 
+                  animation: `fadeInUp 0.6s ease-out ${index * 0.1}s both` 
+                }}>
+                <FeatureCard {...feature} />
+              </div>
             ))}
           </div>
         </div>
       </section>
 
       {/* ═══ HOW IT WORKS ═══ */}
-      <section id="how-it-works" className="px-6 py-24 lg:px-8">
+      <section id="how-it-works" className="px-6 py-24 sm:py-28 lg:py-32 lg:px-8">
         <div className="mx-auto max-w-6xl">
           
           {/* Section Header */}
-          <div className="mb-16 text-center">
-            <div className="mb-4 inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs font-bold uppercase tracking-wider"
+          <div className="mb-16 sm:mb-20 text-center">
+            <div className="mb-5 inline-flex items-center gap-2 rounded-full px-4 py-2 text-xs font-bold uppercase tracking-wider"
               style={{ background: theme.colors.primaryDim, color: theme.colors.primary }}>
-              <IoSparkles size={14} />
+              <IoSparkles size={16} />
               How It Works
             </div>
-            <h2 className="mb-6 text-4xl font-black sm:text-5xl">
+            <h2 className="mb-6 text-4xl font-black sm:text-5xl lg:text-6xl">
               Three Simple Steps to{" "}
               <span style={{
                 background: theme.gradient.primary,
@@ -518,13 +471,13 @@ function Landing() {
                 Better Wellness
               </span>
             </h2>
-            <p className="mx-auto max-w-2xl text-lg" style={{ color: theme.colors.textDim }}>
+            <p className="mx-auto max-w-2xl text-lg sm:text-xl" style={{ color: theme.colors.textDim }}>
               Start tracking your health in minutes with our intuitive voice-first platform
             </p>
           </div>
 
           {/* Steps Grid */}
-          <div className="grid gap-8 md:grid-cols-3">
+          <div className="grid gap-8 md:grid-cols-3 md:gap-6">
             {STEPS.map((step, index) => (
               <StepCard key={step.number} {...step} isLast={index === STEPS.length - 1} />
             ))}
@@ -533,17 +486,17 @@ function Landing() {
       </section>
 
       {/* ═══ TESTIMONIALS ═══ */}
-      <section className="px-6 py-24 lg:px-8">
+      <section className="px-6 py-24 sm:py-28 lg:py-32 lg:px-8">
         <div className="mx-auto max-w-7xl">
           
           {/* Section Header */}
-          <div className="mb-16 text-center">
-            <div className="mb-4 inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs font-bold uppercase tracking-wider"
+          <div className="mb-16 sm:mb-20 text-center">
+            <div className="mb-5 inline-flex items-center gap-2 rounded-full px-4 py-2 text-xs font-bold uppercase tracking-wider"
               style={{ background: theme.colors.primaryDim, color: theme.colors.primary }}>
-              <FaStar size={12} />
+              <FaStar size={14} />
               Testimonials
             </div>
-            <h2 className="mb-6 text-4xl font-black sm:text-5xl">
+            <h2 className="mb-6 text-4xl font-black sm:text-5xl lg:text-6xl">
               Trusted by Users{" "}
               <span style={{
                 background: theme.gradient.primary,
@@ -553,6 +506,9 @@ function Landing() {
                 Across Languages
               </span>
             </h2>
+            <p className="mx-auto max-w-2xl text-lg sm:text-xl" style={{ color: theme.colors.textDim }}>
+              Real stories from people using MindTalk AI every day
+            </p>
           </div>
 
           {/* Testimonials Grid */}
@@ -565,19 +521,23 @@ function Landing() {
       </section>
 
       {/* ═══ LANGUAGES SECTION ═══ */}
-      <section id="languages" className="px-6 py-24 lg:px-8">
+      <section id="languages" className="px-6 py-24 sm:py-28 lg:py-32 lg:px-8">
         <div className="mx-auto max-w-6xl">
-          <div className="rounded-3xl p-12 lg:p-16"
-            style={{ background: theme.colors.glass, border: `1px solid ${theme.colors.border}` }}>
+          <div className="rounded-3xl p-10 sm:p-12 lg:p-16"
+            style={{ 
+              background: `linear-gradient(135deg, ${theme.colors.glass}, transparent)`, 
+              border: `1px solid ${theme.colors.border}`,
+              boxShadow: "0 4px 24px rgba(0, 0, 0, 0.1)",
+            }}>
             
             {/* Header */}
-            <div className="mb-10 text-center">
-              <div className="mb-4 inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs font-bold uppercase tracking-wider"
+            <div className="mb-12 text-center">
+              <div className="mb-5 inline-flex items-center gap-2 rounded-full px-4 py-2 text-xs font-bold uppercase tracking-wider"
                 style={{ background: theme.colors.primaryDim, color: theme.colors.primary }}>
-                <MdTranslate size={14} />
+                <MdTranslate size={16} />
                 Languages
               </div>
-              <h2 className="mb-4 text-4xl font-black sm:text-5xl">
+              <h2 className="mb-6 text-4xl font-black sm:text-5xl lg:text-6xl">
                 Speak Your{" "}
                 <span style={{
                   background: theme.gradient.primary,
@@ -587,7 +547,7 @@ function Landing() {
                   Language
                 </span>
               </h2>
-              <p className="mx-auto max-w-2xl text-lg" style={{ color: theme.colors.textDim }}>
+              <p className="mx-auto max-w-2xl text-lg sm:text-xl" style={{ color: theme.colors.textDim }}>
                 MindTalk AI supports 13+ languages including Ghanaian local languages, powered by Khaya AI for accurate transcription
               </p>
             </div>
@@ -596,7 +556,7 @@ function Landing() {
             <div className="flex flex-wrap justify-center gap-3">
               {LANGUAGES.map((lang) => (
                 <span key={lang}
-                  className="rounded-full px-6 py-2.5 text-sm font-semibold transition-all hover:scale-105"
+                  className="rounded-full px-5 sm:px-6 py-2.5 sm:py-3 text-sm sm:text-base font-semibold transition-all hover:scale-105 hover:shadow-lg"
                   style={{
                     background: theme.colors.primaryDim,
                     border: `1px solid ${theme.colors.primary}40`,
@@ -605,7 +565,7 @@ function Landing() {
                   {lang}
                 </span>
               ))}
-              <span className="rounded-full px-6 py-2.5 text-sm font-semibold"
+              <span className="rounded-full px-5 sm:px-6 py-2.5 sm:py-3 text-sm sm:text-base font-semibold"
                 style={{ background: theme.colors.glass, color: theme.colors.textMuted }}>
                 + more coming soon
               </span>
@@ -615,17 +575,17 @@ function Landing() {
       </section>
 
       {/* ═══ PRICING SECTION ═══ */}
-      <section id="pricing" className="px-6 py-24 lg:px-8">
+      <section id="pricing" className="px-6 py-24 sm:py-28 lg:py-32 lg:px-8">
         <div className="mx-auto max-w-4xl">
           
           {/* Section Header */}
-          <div className="mb-16 text-center">
-            <div className="mb-4 inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs font-bold uppercase tracking-wider"
+          <div className="mb-16 sm:mb-20 text-center">
+            <div className="mb-5 inline-flex items-center gap-2 rounded-full px-4 py-2 text-xs font-bold uppercase tracking-wider"
               style={{ background: theme.colors.primaryDim, color: theme.colors.primary }}>
-              <FaCheck size={12} />
+              <FaCheck size={14} />
               Pricing
             </div>
-            <h2 className="mb-6 text-4xl font-black sm:text-5xl">
+            <h2 className="mb-6 text-4xl font-black sm:text-5xl lg:text-6xl">
               Simple,{" "}
               <span style={{
                 background: theme.gradient.primary,
@@ -636,30 +596,30 @@ function Landing() {
               </span>
               {" "}Pricing
             </h2>
-            <p className="mx-auto max-w-2xl text-lg" style={{ color: theme.colors.textDim }}>
+            <p className="mx-auto max-w-2xl text-lg sm:text-xl" style={{ color: theme.colors.textDim }}>
               No credit card required. No hidden fees. Start for free today.
             </p>
           </div>
 
           {/* Pricing Card */}
-          <div className="mx-auto max-w-lg rounded-3xl p-10 lg:p-12"
+          <div className="mx-auto max-w-lg rounded-3xl p-10 sm:p-12 lg:p-14"
             style={{
               background: `linear-gradient(135deg, ${theme.colors.primaryDim}, ${theme.colors.glass})`,
-              border: `1px solid ${theme.colors.borderBright}`,
-              boxShadow: theme.shadow.card,
+              border: `1px solid ${theme.colors.border}`,
+              boxShadow: "0 8px 32px rgba(0, 0, 0, 0.2)",
             }}>
             
             {/* Price Header */}
-            <div className="mb-8 text-center">
-              <div className="mb-3 inline-block rounded-full px-4 py-1.5 text-xs font-bold uppercase"
+            <div className="mb-10 text-center">
+              <div className="mb-4 inline-block rounded-full px-5 py-2 text-xs sm:text-sm font-bold uppercase tracking-wider"
                 style={{ background: theme.colors.primary, color: theme.colors.bg }}>
                 Free Forever
               </div>
-              <div className="mb-2">
-                <span className="text-7xl font-black">$0</span>
-                <span className="text-2xl font-bold" style={{ color: theme.colors.textDim }}> / month</span>
+              <div className="mb-3">
+                <span className="text-6xl sm:text-7xl lg:text-8xl font-black">$0</span>
+                <span className="text-xl sm:text-2xl font-bold" style={{ color: theme.colors.textDim }}> / month</span>
               </div>
-              <p className="text-base" style={{ color: theme.colors.textDim }}>
+              <p className="text-base sm:text-lg" style={{ color: theme.colors.textDim }}>
                 Everything included, no limits
               </p>
             </div>
@@ -667,38 +627,40 @@ function Landing() {
             {/* Features List */}
             <ul className="mb-10 space-y-4">
               {PLAN_FEATURES.map((feature) => (
-                <li key={feature} className="flex items-center gap-3">
+                <li key={feature} className="flex items-center gap-3.5">
                   <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full"
                     style={{ background: theme.colors.primary }}>
                     <FaCheck size={12} style={{ color: theme.colors.bg }} />
                   </div>
-                  <span className="text-base">{feature}</span>
+                  <span className="text-base sm:text-lg">{feature}</span>
                 </li>
               ))}
             </ul>
 
             {/* CTA Button */}
             <Link to="/auth"
-              className="block w-full rounded-full py-4 text-center text-lg font-bold transition-all hover:scale-105"
+              className="group flex items-center justify-center gap-2 w-full rounded-full py-4 sm:py-5 text-base sm:text-lg font-bold transition-all hover:scale-105"
               style={{
                 background: theme.colors.primary,
                 color: theme.colors.bg,
-                boxShadow: theme.shadow.glow,
+                boxShadow: `0 0 40px ${theme.colors.primary}40`,
               }}>
               Get Started Free
+              <FaArrowRight className="transition-transform group-hover:translate-x-1" size={16} />
             </Link>
           </div>
         </div>
       </section>
 
       {/* ═══ FINAL CTA ═══ */}
-      <section className="px-6 py-24 lg:px-8">
-        <div className="mx-auto max-w-5xl rounded-3xl p-12 text-center lg:p-16"
+      <section className="px-6 py-24 sm:py-28 lg:py-32 lg:px-8">
+        <div className="mx-auto max-w-5xl rounded-3xl p-12 sm:p-16 lg:p-20 text-center"
           style={{
             background: `linear-gradient(135deg, ${theme.colors.glass}, transparent)`,
             border: `1px solid ${theme.colors.border}`,
+            boxShadow: "0 4px 24px rgba(0, 0, 0, 0.1)",
           }}>
-          <h2 className="mb-6 text-4xl font-black sm:text-5xl lg:text-6xl">
+          <h2 className="mb-6 sm:mb-8 text-4xl font-black sm:text-5xl lg:text-6xl">
             Ready to Start Your{" "}
             <span style={{
               background: theme.gradient.primary,
@@ -708,44 +670,49 @@ function Landing() {
               Wellness Journey?
             </span>
           </h2>
-          <p className="mb-10 text-lg" style={{ color: theme.colors.textDim }}>
+          <p className="mb-10 sm:mb-12 text-lg sm:text-xl lg:text-2xl" style={{ color: theme.colors.textDim }}>
             Join thousands using MindTalk AI to track their health in their own language
           </p>
           <Link to="/auth"
-            className="group inline-flex items-center gap-3 rounded-full px-10 py-5 text-lg font-bold transition-all hover:scale-105"
+            className="group inline-flex items-center gap-3 rounded-full px-10 sm:px-12 py-5 sm:py-6 text-lg sm:text-xl font-bold transition-all hover:scale-105"
             style={{
               background: theme.colors.primary,
               color: theme.colors.bg,
-              boxShadow: theme.shadow.glowLarge,
+              boxShadow: `0 8px 40px ${theme.colors.primary}40`,
             }}>
             Get Started Free
-            <FaArrowRight className="transition-transform group-hover:translate-x-1" size={18} />
+            <FaArrowRight className="transition-transform group-hover:translate-x-1" size={20} />
           </Link>
         </div>
       </section>
 
       {/* ═══ FOOTER ═══ */}
-      <footer className="border-t px-6 py-12" 
+      <footer className="border-t px-6 py-16 sm:py-20" 
         style={{ borderColor: theme.colors.border, background: theme.colors.bgLight }}>
         <div className="mx-auto max-w-7xl">
           
           {/* Top Row */}
-          <div className="mb-10 flex flex-col items-center justify-between gap-8 md:flex-row">
+          <div className="mb-12 flex flex-col items-center justify-between gap-10 md:flex-row md:items-start">
             
             {/* Brand */}
-            <div className="flex items-center gap-3">
-              <img src="/logo.jpeg" alt="MindTalk AI" 
-                className="h-10 w-10 rounded-xl object-cover ring-2 ring-white/10" />
-              <div>
-                <div className="text-lg font-bold">MindTalk AI</div>
-                <div className="text-sm" style={{ color: theme.colors.textMuted }}>
-                  Your AI Health Companion
+            <div className="flex flex-col items-center md:items-start gap-4">
+              <div className="flex items-center gap-3">
+                <img src="/logo.jpeg" alt="MindTalk AI" 
+                  className="h-12 w-12 rounded-xl object-cover ring-2 ring-white/10" />
+                <div>
+                  <div className="text-xl font-bold">MindTalk AI</div>
+                  <div className="text-sm" style={{ color: theme.colors.textMuted }}>
+                    Your AI Health Companion
+                  </div>
                 </div>
               </div>
+              <p className="max-w-xs text-center md:text-left text-sm" style={{ color: theme.colors.textDim }}>
+                Track your wellness in your own language with AI-powered insights
+              </p>
             </div>
 
             {/* Links */}
-            <div className="flex flex-wrap justify-center gap-8">
+            <div className="flex flex-wrap justify-center gap-x-10 gap-y-4 md:justify-end">
               <a href="#features" className="text-sm font-medium transition-colors hover:text-white"
                 style={{ color: theme.colors.textDim }}>Features</a>
               <a href="#how-it-works" className="text-sm font-medium transition-colors hover:text-white"
@@ -761,10 +728,10 @@ function Landing() {
 
           {/* Bottom Row */}
           <div className="border-t pt-8 text-center" style={{ borderColor: theme.colors.border }}>
-            <p className="mb-2 text-sm" style={{ color: theme.colors.textMuted }}>
+            <p className="mb-3 text-xs sm:text-sm" style={{ color: theme.colors.textMuted }}>
               MindTalk AI is for informational and wellness purposes only. Not a substitute for professional medical advice, diagnosis, or treatment.
             </p>
-            <p className="text-sm" style={{ color: theme.colors.textMuted }}>
+            <p className="text-xs sm:text-sm" style={{ color: theme.colors.textMuted }}>
               © 2026 MindTalk AI. All rights reserved.
             </p>
           </div>
@@ -814,14 +781,13 @@ function MobileNavLink({ href, onClick, children }: {
 // Trust Badge Component
 function TrustBadge({ icon: Icon, text }: { icon: any; text: string }) {
   return (
-    <div className="flex items-center gap-2 text-xs sm:text-sm font-medium" style={{ color: theme.colors.textMuted }}>
+    <div className="flex items-center gap-2.5 text-sm sm:text-base font-medium" style={{ color: theme.colors.textMuted }}>
       <div 
-        className="flex h-7 w-7 sm:h-8 sm:w-8 items-center justify-center rounded-lg transition-transform hover:scale-110"
+        className="flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-lg transition-transform hover:scale-110"
         style={{ background: theme.colors.primaryDim }}>
-        <Icon className="w-3 h-3 sm:w-4 sm:h-4" style={{ color: theme.colors.primary }} />
+        <Icon className="w-4 h-4 sm:w-5 sm:h-5" style={{ color: theme.colors.primary }} />
       </div>
-      <span className="hidden sm:inline">{text}</span>
-      <span className="sm:hidden">{text.split(' ')[0]}</span>
+      <span>{text}</span>
     </div>
   );
 }
@@ -879,26 +845,48 @@ function FeatureCard({ icon: Icon, title, description, color }: {
 }) {
   return (
     <div
-      className="group rounded-3xl p-8 transition-all hover:scale-[1.02]"
+      className="group relative overflow-hidden rounded-3xl p-8 transition-all duration-300 hover:scale-[1.02]"
       style={{
         background: theme.colors.glass,
         border: `1px solid ${theme.colors.border}`,
+        boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
       }}>
       
-      {/* Icon */}
-      <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl transition-transform group-hover:scale-110"
+      {/* Hover glow effect */}
+      <div
+        className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
         style={{
-          background: `${color}20`,
-          border: `1px solid ${color}40`,
-        }}>
-        <Icon size={32} style={{ color }} />
+          background: `radial-gradient(circle at 50% 0%, ${color}15 0%, transparent 70%)`,
+        }}
+      />
+
+      {/* Content wrapper */}
+      <div className="relative">
+        {/* Icon */}
+        <div 
+          className="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl transition-all duration-300 group-hover:scale-110 group-hover:rotate-3"
+          style={{
+            background: `${color}20`,
+            border: `1px solid ${color}40`,
+            boxShadow: `0 4px 12px ${color}20`,
+          }}>
+          <Icon size={32} style={{ color }} />
+        </div>
+
+        {/* Title */}
+        <h3 className="mb-3 text-xl font-bold leading-tight">{title}</h3>
+        
+        {/* Description */}
+        <p className="text-base leading-relaxed" style={{ color: theme.colors.textDim }}>
+          {description}
+        </p>
       </div>
 
-      {/* Content */}
-      <h3 className="mb-3 text-xl font-bold">{title}</h3>
-      <p className="leading-relaxed" style={{ color: theme.colors.textDim }}>
-        {description}
-      </p>
+      {/* Bottom accent line */}
+      <div 
+        className="absolute bottom-0 left-0 h-1 w-0 transition-all duration-300 group-hover:w-full"
+        style={{ background: `linear-gradient(90deg, ${color}, transparent)` }}
+      />
     </div>
   );
 }
@@ -988,6 +976,17 @@ if (typeof document !== "undefined" && !document.querySelector("#landing-animati
     @keyframes float {
       0%, 100% { transform: translateY(0px); }
       50% { transform: translateY(-12px); }
+    }
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
   `;
   document.head.appendChild(style);
